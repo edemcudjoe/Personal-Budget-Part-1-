@@ -56,9 +56,22 @@ const editAnEnvelope = (id, newInfo) => {
 
 }
 
+
+const removeAnEnvelope = (id) => {
+    const envelopeIndex = envelopesData.findIndex(envelope => envelope.id === Number(id));
+
+    if (envelopeIndex === -1) {
+        return null;
+    }
+
+    envelopesData.splice(envelopeIndex, 1);
+    return true;
+}
+
 module.exports = {
     newEnvelope,
     allEnvelopes,
     getEnvelopeById,
-    editAnEnvelope
+    editAnEnvelope,
+    removeAnEnvelope
 }

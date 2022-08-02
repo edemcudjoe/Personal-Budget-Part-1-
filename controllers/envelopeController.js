@@ -1,4 +1,4 @@
-const { newEnvelope, allEnvelopes, getEnvelopeById, editAnEnvelope } = require("../data/data")
+const { newEnvelope, allEnvelopes, getEnvelopeById, editAnEnvelope, removeAnEnvelope } = require("../data/data")
 
 const createEnvelope = (req, res, next) => {
     const envelopeCreated = newEnvelope(req.body);
@@ -42,9 +42,22 @@ const updateAnEnvelope = (req, res, next) => {
     res.status(200).send(updatedEnvelope);
 }
 
+
+const deleteAnEnvelope = (req, res, next) => {
+    const envelopeDeleted = removeAnEnvelope(req.params.id);
+
+    if (!envelopeDeleted) {
+        res.status(404).send('Envelope With Given ID Not Found')
+    }
+
+    res.status(204).send('Envelope Deleted!!!')
+
+}
+
 module.exports = {
     createEnvelope,
     getAllEnvelopes,
     getAnEnvelope,
-    updateAnEnvelope
+    updateAnEnvelope,
+    deleteAnEnvelope
 }

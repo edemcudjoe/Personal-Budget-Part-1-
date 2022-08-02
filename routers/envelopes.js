@@ -1,5 +1,5 @@
 const express = require('express');
-const { createEnvelope, getAllEnvelopes, getAnEnvelope, updateAnEnvelope } = require('../controllers/envelopeController');
+const { createEnvelope, getAllEnvelopes, getAnEnvelope, updateAnEnvelope, deleteAnEnvelope } = require('../controllers/envelopeController');
 const { envelopeDetailsValidator } = require('../controllers/validationController');
 const envelopesRouter = express.Router();
 
@@ -12,5 +12,6 @@ envelopesRouter
     .route('/:id')
     .get(getAnEnvelope)
     .put(envelopeDetailsValidator, updateAnEnvelope)
+    .delete(deleteAnEnvelope)
 
 module.exports = envelopesRouter;
