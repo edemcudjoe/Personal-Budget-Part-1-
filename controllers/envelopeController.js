@@ -13,6 +13,7 @@ const createEnvelope = (req, res, next) => {
 const getAllEnvelopes = (req, res, next) => {
     const allAvailableEnvelopes = allEnvelopes();
 
+    // console.log(req)
     res.status(200).send(allAvailableEnvelopes);
 }
 
